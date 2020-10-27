@@ -20,7 +20,7 @@ This repository contains a minimal .NET Core app. You don't need to worry about 
 
 #### Run
 1. Run `dotnet run` in the DotnetTemplate.Web folder. This will start the app.
-2. You can now see the website by going to [https://localhost:5000/](https://localhost:80/). You should see something like the image below.
+2. You can now see the website by going to [http://localhost:5000/](http://localhost:80/). You should see something like the image below.
 
 ![Mini app](img/mini-app.png)
 
