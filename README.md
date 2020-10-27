@@ -1,4 +1,4 @@
-# Workshop Module 07 & 08
+# Workshop Module 07
 
 This repository is for learners on Corndel's DevOps apprenticeship.
 
