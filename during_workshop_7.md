@@ -4,10 +4,10 @@
 
 ### Step 1 - Get the code
 
-The repository we're going to be building on is [here](https://github.com/CorndelWithSoftwire/DevOps-Course-Workshop-Module-07-08). Because you'll need to change some settings on the repository later in the workshop, it's recommended that you [fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) the repository instead of cloning it. To do that:
+We'll be working on top of this repository. Because you'll need to change some settings on the repository later in the workshop, it's recommended that you [fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) the repository instead of cloning it. To do that:
 1. Click the Fork button in the top right on the repository page. 
 2. Select your GitHub user when it asks you where you should fork it to.
-3. This should take you to a fork of the repository on your account, e.g. https://github.com/MyUser/DevOps-Course-Workshop-Module-07-08 where MyUser will be replaced by your username. 
+3. This should take you to a fork of the repository on your account, e.g. https://github.com/MyUser/DevOps-Course-Workshop-Module-07-Learners where MyUser will be replaced by your username. 
 4. You can now clone and push to that repository as normal.
 
 ### Step 2 - Set up the app
@@ -20,7 +20,7 @@ This repository contains a minimal .NET Core app. You don't need to worry about 
 
 #### Run
 1. Run `dotnet run` in the DotnetTemplate.Web folder. This will start the app.
-2. You can now see the website by going to [http://localhost:5000/](http://localhost:80/). You should see something like the image below.
+2. You can now see the website by going to [http://localhost:5000/](http://localhost:5000/). You should see something like the image below.
 
 ![Mini app](img/mini-app.png)
 
