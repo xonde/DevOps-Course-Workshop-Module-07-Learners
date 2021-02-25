@@ -12,11 +12,11 @@ We'll be working on top of this repository. Because you'll need to change some s
 
 ### Step 2 - Set up the app
 
-This repository contains a minimal .NET Core app. You don't need to worry about exactly how the code works, but you should be able to build, test and run it. It uses [npm](https://www.npmjs.com/) which is a package manager for the Node JavaScript platform. 
+This repository contains a minimal .NET Core app. You don't need to worry about exactly how the code works, but you should be able to build, test and run it. It uses [npm](https://www.npmjs.com/) which is a package manager for the Node JavaScript platform. If you are struggling to run the code locally, you should skip to step 3 before spending too much time trying to resolve the issue. It's only preferable to run it locally first to better understand what you want GitHub Actions to replicate.
 
 #### Build
 1. Run `dotnet build` from the terminal in the project folder. This will build the C# code.
-2. Run `npm run build` (if it's your first time building you also need to run `npm install`) in the DotnetTemplate.Web folder. This will build the typescript code.
+2. From the DotnetTemplate.Web folder, run `npm install` (first time only) and then `npm run build`. This will build the typescript code. If you see errors during installation containing "gyp ERR", you may need to first run `npm install --global windows-build-tools` (and restart your terminal).
 
 #### Run
 1. Run `dotnet run` in the DotnetTemplate.Web folder. This will start the app.
@@ -27,7 +27,7 @@ This repository contains a minimal .NET Core app. You don't need to worry about 
 #### Test
 1. Run `dotnet test` inside the project folder. This will run the C# tests in the DotnetTemplate.Web.Tests project.
 2. Run `npm t` inside the DotnetTemplate.Web folder. This will run the typescript tests in DotnetTemplate.Web/Scripts/spec. They're run using [Jasmine](https://jasmine.github.io/).
-3. Run `npm run lint` inside the DotnetTemplate.Web folder. This will run linting on the typescript code, using [eslint](https://eslint.org/).
+3. Run `npm run lint` inside the DotnetTemplate.Web folder. This will run linting on the typescript code, using [eslint](https://eslint.org/). Linting refers to checking the codebase for mistakes, either functional or stylistic. This project's linting currently reports zero errors, one warning.
 
 ### Step 3 - Set up GitHub Actions
 
