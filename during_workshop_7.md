@@ -12,7 +12,7 @@ We'll be working on top of this repository. Because you'll need to change some s
 
 ### Step 2 - Set up the app
 
-This repository contains a minimal .NET Core app. You don't need to worry about exactly how the code works, but you should be able to build, test and run it. It uses [npm](https://www.npmjs.com/) which is a package manager for the Node JavaScript platform. If you are struggling to run the code locally, you should skip to step 3 before spending too much time trying to resolve the issue. It's only preferable to run it locally first to better understand what you want GitHub Actions to replicate.
+This repository contains a minimal .NET Core app. You don't need to worry about exactly how the code works, but you should be able to build, test and run it. It uses [npm](https://www.npmjs.com/) which is a package manager for the Node JavaScript platform. **If you are struggling to run the code locally, you should skip to step 3 before spending too much time trying to resolve the issue.** It's only preferable to run it locally first to better understand what you want GitHub Actions to replicate.
 
 #### Build
 1. Run `dotnet build` from the terminal in the project folder. This will build the C# code.
