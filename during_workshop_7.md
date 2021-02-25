@@ -145,7 +145,7 @@ You have 2 options for installing .NET Core & npm inside jenkins:
 1. Make installation separate build stages
     * This is not ideal as you will have to run the installation on each build
 2. [Specify containers to run stages of the jenkins pipeline with .NET Core and npm pre-installed](https://www.jenkins.io/doc/book/pipeline/docker/)
-    * There are some pre-built images for npm (e.g. `node:14-alpine`) but for .NET Core you'll want to use either [Microsoft's images](https://hub.docker.com/_/microsoft-dotnet-core-sdk) or [script the installation from a base image such as alpine linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux-alpine)
+    * There are some pre-built images for npm (e.g. `node:14-alpine`) but for .NET Core you'll want to use either [Microsoft's images](https://hub.docker.com/_/microsoft-dotnet-core-sdk) or [script the installation from a base image such as alpine linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux-alpine). You may need to set an environment variable `DOTNET_CLI_HOME` (e.g. to `"/tmp/dotnet_cli_home"`) in your Jenkinsfile for the dotnet CLI to work correctly.
 
 #### Run the Jenkins job
 1. Commit and push your new Jenkinsfile.
