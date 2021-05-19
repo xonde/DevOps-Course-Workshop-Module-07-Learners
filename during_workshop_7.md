@@ -16,7 +16,7 @@ This repository contains a minimal .NET Core app. You don't need to worry about 
 
 #### Build
 1. Run `dotnet build` from the terminal in the project folder. This will build the C# code.
-2. From the DotnetTemplate.Web folder, run `npm install` (first time only) and then `npm run build`. This will build the typescript code. If you see errors during installation containing "gyp ERR", you may need to first run `npm install --global windows-build-tools` (and restart your terminal).
+2. From the DotnetTemplate.Web folder, run `npm install` (first time only) and then `npm run build`. This will build the TypeScript code. If you are on Windows and see errors during installation containing "gyp ERR", you may need to first run `npm install --global windows-build-tools` (and restart your terminal).
 
 #### Run
 1. Run `dotnet run` in the DotnetTemplate.Web folder. This will start the app.
@@ -26,12 +26,15 @@ This repository contains a minimal .NET Core app. You don't need to worry about 
 
 #### Test
 1. Run `dotnet test` inside the project folder. This will run the C# tests in the DotnetTemplate.Web.Tests project.
-2. Run `npm t` inside the DotnetTemplate.Web folder. This will run the typescript tests in DotnetTemplate.Web/Scripts/spec. They're run using [Jasmine](https://jasmine.github.io/).
-3. Run `npm run lint` inside the DotnetTemplate.Web folder. This will run linting on the typescript code, using [eslint](https://eslint.org/). Linting refers to checking the codebase for mistakes, either functional or stylistic. This project's linting currently reports zero errors, one warning.
+2. Run `npm t` inside the DotnetTemplate.Web folder. This will run the TypeScript tests in DotnetTemplate.Web/Scripts/spec. They're run using [Jasmine](https://jasmine.github.io/).
+3. Run `npm run lint` inside the DotnetTemplate.Web folder. This will run linting on the TypeScript code, using [eslint](https://eslint.org/). Linting refers to checking the codebase for mistakes, either functional or stylistic. This project's linting currently reports zero errors, one warning.
 
 ### Step 3 - Set up GitHub Actions
 
-1. Create the config file for your continuous integration pipeline. This should be created in .github/workflows and you can name it whatever you like, although it needs to have a .yml extension, e.g. continuous-integration-workflow.yml.
+1. Create the config file for your continuous integration pipeline:
+    - Create a folder calld ".github" at the root of the repository.
+    - Inside there, create a "workflows" folder.
+    - Inside there create a file: you can name it whatever you like, although it needs to have a .yml extension, e.g. continuous-integration-workflow.yml.
 2. Implement a basic workflow:
 ```
 name: Continuous Integration
@@ -53,7 +56,7 @@ See [the GitHub documentation](https://docs.github.com/en/actions/configuring-an
 
 ### Step 4 - Add more actions
 Currently our workflow only checks out the code, which isn't that useful. We want to add some more useful steps to the workflow file. Each step in the workflow file either needs to:
-- Run a command, as in the terminal, for example:
+- Specify `run` to run a command as you would in the terminal, for example:
 ```
 name: Continuous Integration
 on: [push]
@@ -69,7 +72,7 @@ jobs:
     - name: Hello world       # Name of step
       run: echo 'Hello world' # Command to run
 ```
-- Use an action. You specify this using the `uses` keyword, followed by the name of the action. The name of the action is of the form `GitHubUsername/RepositoryName`. The action can be one supplied by GitHub, in which case you can find it here: https://github.com/actions. It could also be one created by someone else, in which case you can find them by googling or by browsing https://github.com/marketplace?type=actions. You can also create your own action, or fork an existing action to make changes to it. For example:
+- Specify `uses`followed by the name of the action. The name of the action is of the form `GitHubUsername/RepositoryName`. The action can be one supplied by GitHub, in which case you can find it here: https://github.com/actions. It could also be one created by someone else, in which case you can find them by googling or by browsing https://github.com/marketplace?type=actions. You can also create your own action, or fork an existing action to make changes to it. For example:
 ```
 name: Continuous Integration
 on: [push]
@@ -90,9 +93,9 @@ jobs:
 You should amend your workflow file so that it:
 1. Builds the C# code.
 2. Runs the C# tests.
-3. Builds the typescript code.
-4. Runs the linter on the typescript code.
-5. Runs the typescript tests.
+3. Builds the TypeScript code.
+4. Runs the linter on the TypeScript code.
+5. Runs the TypeScript tests.
 
 ### (Stretch goal) Slack notifications
 To make sure people are aware when there are issues with the build, it can be useful to send a slack notification at the end of the workflow.
@@ -139,9 +142,9 @@ From your Jenkins dashboard:
 See https://www.jenkins.io/doc/book/pipeline/jenkinsfile/ for details on how to create a Jenkinsfile. We want to add the same steps as for the GitHub Actions workflow so that it:
 1. Builds the C# code.
 2. Runs the C# tests.
-3. Builds the typescript code.
-4. Runs the linter on the typescript code.
-5. Runs the typescript tests.
+3. Builds the TypeScript code.
+4. Runs the linter on the TypeScript code.
+5. Runs the TypeScript tests.
 
 You have 2 options for installing .NET Core & npm inside jenkins:
 1. Make installation separate build stages
