@@ -75,7 +75,7 @@ jobs:
     - name: Hello world       # Name of step
       run: echo 'Hello world' # Command to run
 ```
-* Specify `uses`followed by the name of the action. The name of the action is of the form `GitHubUsername/RepositoryName`. The action can be one supplied by GitHub, in which case you can find it here: <https://github.com/actions>. It could also be one created by someone else, in which case you can find them by googling or by browsing https://github.com/marketplace?type=actions. You can also create your own action, or fork an existing action to make changes to it. For example:
+* Specify `uses` followed by the name of the action. The name of the action is of the form `GitHubUsername/RepositoryName` and you can find them by searching the [marketplace](https://github.com/marketplace?type=actions). Anyone can publish actions - you could create your own or fork an existing one. If it is supplied by GitHub themselves, the username will be `actions`. For example:
 ```yaml
 name: Continuous Integration
 on: [push]
