@@ -30,7 +30,7 @@ This repository contains a minimal .NET Core app. You don't need to worry about 
 #### Test
 1. Run `dotnet test` inside the project folder. This will run the C# tests in the DotnetTemplate.Web.Tests project.
 2. Run `npm t` inside the DotnetTemplate.Web folder. This will run the TypeScript tests in DotnetTemplate.Web/Scripts/spec. They're run using [Jasmine](https://jasmine.github.io/).
-3. Run `npm run lint` inside the DotnetTemplate.Web folder. This will run linting on the TypeScript code, using [eslint](https://eslint.org/). Linting refers to checking the codebase for mistakes, either functional or stylistic. This project's linting currently reports zero errors, one warning.
+3. Run `npm run lint` inside the DotnetTemplate.Web folder. This will run linting on the TypeScript code, using [eslint](https://eslint.org/). Linting refers to checking the codebase for mistakes, either functional or stylistic. This project's linting currently reports zero errors, two warnings.
 
 ### Step 3 - Set up GitHub Actions
 
@@ -172,11 +172,33 @@ You have 2 options for installing .NET Core & npm inside jenkins:
 6. Select the most recent build from the build history on the left.
 7. Click "Console Output" to view the full logs from the build.
 
+### (Stretch goal) Code coverage
+We want high _test coverage_, meaningfully testing as much of the functionality of the application as possible. _Code coverage_ is a more naive metric - it simply checks which lines of code were executed during the test run. But higher code coverage is usually a good thing and it can still usefully flag which parts of the codebase are definitely untested. So let's include code coverage in our CI pipeline.
+
+First check it works manually. From the DotnetTemplate.Web folder, run the command `npm run test-with-coverage`. This runs the frontend tests and calculates code coverage at the same time.
+
+It produces two reports: one in HTML form that you can open in your browser (DotnetTemplate.Web/coverage/index.html) and one in XML that we will get Jenkins to parse.
+
+Try adding code coverage to Jenkins:
+
+1. Install the [Code Coverage API](https://plugins.jenkins.io/code-coverage-api/) plugin on Jenkins.
+2. Change your Jenkins pipeline to run the tests with code coverage.
+3. Add a post build step to publish coverage. You can see a simple example of the command if you scroll down the Code Coverage API documentation, to the "pipeline example". You will want to use the "istanbulCoberturaAdapter", and the report to publish is "cobertura-coverage.xml" in the coverage folder. 
+4. You should see a code coverage report appear on the build's page after it completes. Click through to see details.
+
+Now let's enforce high code coverage:
+
+1. Configure it to fail the build for code coverage below 90%. You may find it easiest to use the Jenkins [Snippet Generator](https://www.jenkins.io/doc/book/pipeline/getting-started/#snippet-generator). 
+2. Push your change and watch the build go red!
+3. Edit the `DotnetTemplate.Web/Scripts/spec/exampleSpec.ts` file:
+  * Update the import statement: `import { functionOne, functionTwo } from '../home/example';`
+  * Invoke functionTwo on a new line in the test `functionTwo();`
+4. Push the change and observe the build go green again! You can also view the code coverage history.
+
 ### (Stretch goal) Slack notifications
 Like for the GitHub Actions workflow, add slack notification to the Jenkins job. To make this work you will need to use the slack app [jenkins ci](https://slack.com/apps/A0F7VRFKN-jenkins-ci?next_id=0), make sure this has been installed in the slack workspace you're using.
 
-### (Stretch goal) Create a Docker Compose file for Jenkins
-The jenkins container setup instructions [here](https://www.jenkins.io/doc/book/installing/#docker) involve running several docker commands in sequence which isn't ideal. Create a docker-compose file that will setup both containers and volumes by simply running `docker-compose up`.
+> Note that their documentation may be slightly out of date and not quite match the page you see in Jenkins.
 
 ### (Stretch goal) Use a Single Build Agent for the Jenkins Pipeline
 Can you create a single container that can be used as the sole build agent for the entire multistage Jenkins pipeline?
