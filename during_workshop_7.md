@@ -5,9 +5,9 @@
 ### Step 1 - Get the code
 
 We'll be working on top of this repository. Because you'll need to change some settings on the repository later in the workshop, it's recommended that you [fork](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) the repository instead of cloning it. To do that:
-1. Click the Fork button in the top right on the repository page. 
+1. Click the Fork button in the top right on the repository page.
 2. Select your GitHub user when it asks you where you should fork it to.
-3. This should take you to a fork of the repository on your account, e.g. https://github.com/MyUser/DevOps-Course-Workshop-Module-07-Learners where MyUser will be replaced by your username. 
+3. This should take you to a fork of the repository on your account, e.g. <https://github.com/MyUser/DevOps-Course-Workshop-Module-07-Learners> where MyUser will be replaced by your username.
 4. You can now clone and push to that repository as normal.
 
 ### Step 2 - Set up the app
@@ -16,7 +16,10 @@ This repository contains a minimal .NET Core app. You don't need to worry about 
 
 #### Build
 1. Run `dotnet build` from the terminal in the project folder. This will build the C# code.
-2. From the DotnetTemplate.Web folder, run `npm install` (first time only) and then `npm run build`. This will build the TypeScript code. If you are on Windows and see errors during installation containing "gyp ERR", you may need to first run `npm install --global windows-build-tools` (and restart your terminal).
+    * If you get errors resolving NuGet packages try running `dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org` to add the main NuGet registry as a package source.
+    You can use `dotnet nuget list source` to see what package sources NuGet is using.
+2. From the DotnetTemplate.Web folder, run `npm install` (first time only) and then `npm run build`. This will build the TypeScript code.
+    * If you are on Windows and see errors during installation containing "gyp ERR", you may need to first run `npm install --global windows-build-tools` (and restart your terminal).
 
 #### Run
 1. Run `dotnet run` in the DotnetTemplate.Web folder. This will start the app.
@@ -32,11 +35,11 @@ This repository contains a minimal .NET Core app. You don't need to worry about 
 ### Step 3 - Set up GitHub Actions
 
 1. Create the config file for your continuous integration pipeline:
-    - Create a folder calld ".github" at the root of the repository.
-    - Inside there, create a "workflows" folder.
-    - Inside there create a file: you can name it whatever you like, although it needs to have a .yml extension, e.g. continuous-integration-workflow.yml.
+    * Create a folder called ".github" at the root of the repository.
+    * Inside there, create a "workflows" folder.
+    * Inside there create a file: you can name it whatever you like, although it needs to have a .yml extension, e.g. continuous-integration-workflow.yml.
 2. Implement a basic workflow:
-```
+```yaml
 name: Continuous Integration
 on: [push]                      # Will make the workflow run every time you push to any branch
 
@@ -52,12 +55,12 @@ jobs:
 5. You should see a table of workflows. This should have one entry with a name matching your latest commit message. Select this entry.
 6. On the next page click "Build and test" on the left. This should show you the full output of the workflow which ran when you pushed to your branch. See [the documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/managing-a-workflow-run) for more details on how to view the output from the workflow.
 
-See [the GitHub documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-and-managing-workflow-files-and-runs) for more details on how to set up GitHub Actions and https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions for more details on the syntax of the workflow file.
+See [the GitHub documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-and-managing-workflow-files-and-runs) for more details on how to set up GitHub Actions and <https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions> for more details on the syntax of the workflow file.
 
 ### Step 4 - Add more actions
 Currently our workflow only checks out the code, which isn't that useful. We want to add some more useful steps to the workflow file. Each step in the workflow file either needs to:
-- Specify `run` to run a command as you would in the terminal, for example:
-```
+* Specify `run` to run a command as you would in the terminal, for example:
+```yaml
 name: Continuous Integration
 on: [push]
 
@@ -72,8 +75,8 @@ jobs:
     - name: Hello world       # Name of step
       run: echo 'Hello world' # Command to run
 ```
-- Specify `uses`followed by the name of the action. The name of the action is of the form `GitHubUsername/RepositoryName`. The action can be one supplied by GitHub, in which case you can find it here: https://github.com/actions. It could also be one created by someone else, in which case you can find them by googling or by browsing https://github.com/marketplace?type=actions. You can also create your own action, or fork an existing action to make changes to it. For example:
-```
+* Specify `uses` followed by the name of the action. The name of the action is of the form `GitHubUsername/RepositoryName` and you can find them by searching the [marketplace](https://github.com/marketplace?type=actions). Anyone can publish actions - you could create your own or fork an existing one. If it is supplied by GitHub themselves, the username will be `actions`. For example:
+```yaml
 name: Continuous Integration
 on: [push]
 
@@ -115,18 +118,18 @@ Change your workflow so that it only runs when pushing to the main branch or by 
 ## Part 2 (Jenkins)
 
 ### Step 1 - Run Jenkins locally
-There are two options for running Jenkins locally, you can either install Jenkins or run it through docker. We would recommend running Jenkins through docker and the instructions for that are [here](https://www.jenkins.io/doc/book/installing/#docker). 
+There are two options for running Jenkins locally, you can either install Jenkins or run it through docker. We would recommend running Jenkins through docker and the instructions for that are [here](https://www.jenkins.io/doc/book/installing/#docker).
 
 **NB:** step 4 of the Windows instructions wants you to follow step 4 of the Mac/Linux instructions
 
 ### Step 2 - Set up Jenkins
-Once you've done the step above you should have Jenkins running on http://localhost:8080/. If you go to this url in a browser it should show you a setup page.
-1. Login with the password you got from the logs when starting Jenkins. **Hint:** You can run `docker logs your_container` to access a container's logs. Run `docker container ls` to view a list of running containers. 
+Once you've done the step above you should have Jenkins running on <http://localhost:8080/>. If you go to this url in a browser it should show you a setup page.
+1. Login with the password you got from the logs when starting Jenkins. **Hint:** You can run `docker logs your_container` to access a container's logs. Run `docker container ls` to view a list of running containers.
 2. Now you have the option to select some initial plugins. For now, make sure you tick the GitHub plugin. We won't need any others right away, and you can add more later.
 3. Create an admin user.
-4. Use the default jenkins url (http://localhost:8080)
+4. Use the default jenkins url (<http://localhost:8080>)
 
-You should now see the Jenkins dashboard. 
+You should now see the Jenkins dashboard.
 
 ### Step 3 - Set up a Jenkins build
 We now want to get Jenkins to build our app. To do this you need to create a job on Jenkins for our app and create a [Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/) in your repository to define what the job should do.
@@ -139,7 +142,7 @@ From your Jenkins dashboard:
 4. Click Save to create the Jenkins job.
 
 #### Create a Jenkinsfile
-See https://www.jenkins.io/doc/book/pipeline/jenkinsfile/ for details on how to create a Jenkinsfile. We want to add the same steps as for the GitHub Actions workflow so that it:
+See <https://www.jenkins.io/doc/book/pipeline/jenkinsfile/> for details on how to create a Jenkinsfile. We want to add the same steps as for the GitHub Actions workflow so that it:
 1. Builds the C# code.
 2. Runs the C# tests.
 3. Builds the TypeScript code.
@@ -152,13 +155,21 @@ You have 2 options for installing .NET Core & npm inside jenkins:
 2. [Specify containers to run stages of the jenkins pipeline with .NET Core and npm pre-installed](https://www.jenkins.io/doc/book/pipeline/docker/)
     * There are some pre-built images for npm (e.g. `node:14-alpine`) but for .NET Core you'll want to use either [Microsoft's images](https://hub.docker.com/_/microsoft-dotnet-core-sdk) or [script the installation from a base image such as alpine linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux-alpine). You may need to set an environment variable `DOTNET_CLI_HOME` (e.g. to `"/tmp/dotnet_cli_home"`) in your Jenkinsfile for the dotnet CLI to work correctly.
 
+<details>
+<summary>Hints</summary>
+
+* You'll need to use a `dir` block for some steps to run them inside the `DotnetTemplate.Web` directory.
+* If Jenkins starts rate limiting your repository scanning you can go to "Manage Jenkins" -> "Configure System" and change "Github API usage rate limiting strategy" to "Throttle at/near rate limit". Adding credentials to your pipeline configuration will also increase the limit.
+
+</details>
+
 #### Run the Jenkins job
 1. Commit and push your new Jenkinsfile.
-2. From your Jenkins dashboard select the job you created. 
+2. From your Jenkins dashboard select the job you created.
 3. Click "Scan Multibranch Pipeline Now". This will scan the repository for branches and run the job on any branch with a Jenkinsfile.
 4. Select your branch, which should appear under "Branches" once the scan is done.
 5. You should see a stage view of the build, showing each stage in the Jenkinsfile. If the stage succeeded it will be green, if it failed it will be red.
-6. Select the most recent build from the build history on the left. 
+6. Select the most recent build from the build history on the left.
 7. Click "Console Output" to view the full logs from the build.
 
 ### (Stretch goal) Slack notifications
