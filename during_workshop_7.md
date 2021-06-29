@@ -183,7 +183,7 @@ Try adding code coverage to Jenkins:
 
 1. Install the [Code Coverage API](https://plugins.jenkins.io/code-coverage-api/) plugin on Jenkins.
 2. Change your Jenkins pipeline to run the tests with code coverage.
-3. Add a post build step to publish coverage. You can see a simple example of the command if you scroll down the Code Coverage API documentation, to the "pipeline example". You will want to use the "istanbulCoberturaAdapter", and the report to publish is "cobertura-coverage.xml" in the coverage folder. 
+3. Add a step after running the tests to publish coverage. You can see a simple example of the command if you scroll down the Code Coverage API documentation, to the "pipeline example". You will want to use the "istanbulCoberturaAdapter", and the report to publish is "cobertura-coverage.xml" in the coverage folder. 
 4. You should see a code coverage report appear on the build's page after it completes. Click through to see details.
 
 Now let's enforce high code coverage:
