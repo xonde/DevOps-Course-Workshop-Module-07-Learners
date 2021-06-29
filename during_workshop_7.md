@@ -125,7 +125,7 @@ There are two options for running Jenkins locally, you can either install Jenkin
 ### Step 2 - Set up Jenkins
 Once you've done the step above you should have Jenkins running on <http://localhost:8080/>. If you go to this url in a browser it should show you a setup page.
 1. Login with the password you got from the logs when starting Jenkins. **Hint:** You can run `docker logs your_container` to access a container's logs. Run `docker container ls` to view a list of running containers.
-2. Now you have the option to select some initial plugins. For now, make sure you tick the GitHub plugin. We won't need any others right away, and you can add more later.
+2. Now you have the option to select some initial plugins. Either select the suggested plugins or if you customise it, make sure you include the "GitHub", "Docker" and "Docker Pipeline" plugins. We won't need any others right away, and you can add more later.
 3. Create an admin user.
 4. Use the default jenkins url (<http://localhost:8080>)
 
