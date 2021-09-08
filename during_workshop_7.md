@@ -120,8 +120,6 @@ Change your workflow so that it only runs when pushing to the main branch or by 
 ### Step 1 - Run Jenkins locally
 There are two options for running Jenkins locally, you can either install Jenkins or run it through Docker. We would recommend running Jenkins through Docker and the instructions for that are [here](https://www.jenkins.io/doc/book/installing/#docker).
 
-**NB:** step 4 of the Windows instructions wants you to follow step 4 of the Mac/Linux instructions
-
 ### Step 2 - Set up Jenkins
 Once you've done the step above you should have Jenkins running on <http://localhost:8080/>. If you go to this url in a browser it should show you a setup page.
 1. Login with the password you got from the logs when starting Jenkins. **Hint:** You can run `docker logs your_container` to access a container's logs. Run `docker container ls` to view a list of running containers.
