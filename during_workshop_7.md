@@ -125,7 +125,7 @@ Once you've done the step above you should have Jenkins running on <http://local
 1. Login with the password you got from the logs when starting Jenkins. **Hint:** You can run `docker logs your_container` to access a container's logs. Run `docker container ls` to view a list of running containers.
 2. Now you have the option to select some initial plugins. For now, make sure you tick the GitHub plugin. We won't need any others right away, and you can add more later.
 3. Create an admin user.
-4. Use the default Jenkins url (<http://localhost:8080>)
+4. Use the default Jenkins URL (<http://localhost:8080>)
 
 You should now see the Jenkins dashboard.
 
