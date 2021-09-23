@@ -123,7 +123,7 @@ There are two options for running Jenkins locally, you can either install Jenkin
 ### Step 2 - Set up Jenkins
 Once you've done the step above you should have Jenkins running on <http://localhost:8080/>. If you go to this url in a browser it should show you a setup page.
 1. Login with the password you got from the logs when starting Jenkins. **Hint:** You can run `docker logs your_container` to access a container's logs. Run `docker container ls` to view a list of running containers.
-2. Now you have the option to select some initial plugins. For now, make sure you tick the GitHub plugin. We won't need any others right away, and you can add more later.
+2. Now you have the option to select some initial plugins. Either select the suggested plugins or if you customise it, make sure you include the "GitHub", "Docker" and "Docker Pipeline" plugins. We won't need any others right away, and you can add more later.
 3. Create an admin user.
 4. Use the default Jenkins URL (<http://localhost:8080>)
 
@@ -183,7 +183,7 @@ Try adding code coverage to Jenkins:
 
 1. Install the [Code Coverage API](https://plugins.jenkins.io/code-coverage-api/) plugin on Jenkins.
 2. Change your Jenkins pipeline to run the tests with code coverage.
-3. Add a post build step to publish coverage. You can see a simple example of the command if you scroll down the Code Coverage API documentation, to the "pipeline example". You will want to use the "istanbulCoberturaAdapter", and the report to publish is "cobertura-coverage.xml" in the coverage folder. 
+3. Add a step after running the tests to publish coverage. You can see a simple example of the command if you scroll down the Code Coverage API documentation, to the "pipeline example". You will want to use the "istanbulCoberturaAdapter", and the report to publish is "cobertura-coverage.xml" in the coverage folder. 
 4. You should see a code coverage report appear on the build's page after it completes. Click through to see details.
 
 Now let's enforce high code coverage:
