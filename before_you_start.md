@@ -7,4 +7,4 @@ You will need to have installed the following:
     - Make sure you have the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 - [Git](https://git-scm.com/)
 - [NodeJS + NPM](https://nodejs.org/en/download/)
-- [.NET 5.0 (SDK)](https://dotnet.microsoft.com/download)
+- [.NET SDK (5.0 or 6.0)](https://dotnet.microsoft.com/download)

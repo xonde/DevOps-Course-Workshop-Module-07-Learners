@@ -152,7 +152,7 @@ You have 2 options for installing .NET Core & npm inside Jenkins:
     * This is not ideal as you will have to run the installation on each build
 2. [Specify containers to run stages of the Jenkins pipeline with .NET Core and npm pre-installed](https://www.jenkins.io/doc/book/pipeline/docker/)
     * The simplest approach is to have one stage for your `npm` commands and a second stage for your `dotnet` commands, because each stage can have its own agent. You will have to specify `agent none` at the top of the pipeline. 
-    * There are some pre-built images for npm (e.g. `node:16-alpine`)
+    * There are some pre-built images for npm (e.g. `node:17-alpine`)
     * Similarly for .NET you can use [Microsoft's image](https://hub.docker.com/_/microsoft-dotnet-sdk). You may need to set an environment variable `DOTNET_CLI_HOME` (e.g. to `"/tmp/dotnet_cli_home"`) in your Jenkinsfile for the dotnet CLI to work correctly.
 
 <details>
