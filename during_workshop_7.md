@@ -166,7 +166,7 @@ You have 2 options for installing .NET Core & npm inside Jenkins:
 #### Run the Jenkins job
 1. Commit and push your new Jenkinsfile.
 2. From your Jenkins dashboard select the job you created.
-3. Click "Scan Multibranch Pipeline Now". This will scan the repository for branches and run the job on any branch with a Jenkinsfile.
+3. Click "Scan Repository Now" (exact wording may vary). This will scan the repository for branches and run the job on any branch with a Jenkinsfile.
 4. Select your branch, which should appear under "Branches" once the scan is done.
 5. You should see a stage view of the build, showing each stage in the Jenkinsfile. If the stage succeeded it will be green, if it failed it will be red.
 6. Select the most recent build from the build history on the left.
