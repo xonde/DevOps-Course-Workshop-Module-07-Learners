@@ -55,7 +55,7 @@ Next, we want the pipeline to validate the TypeScript code. You need a different
 
 Fill in the "script" section with the correct commands so that it:
 1. Uses a Docker image with Node installed
-2. Builds the TypeScript code.
+2. Installs dependencies and build the TypeScript code.
 3. Runs the linter on the TypeScript code.
 4. Runs the TypeScript tests.
 
