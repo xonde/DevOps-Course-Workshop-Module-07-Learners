@@ -45,7 +45,7 @@ You have 2 options for installing .NET Core & npm inside Jenkins:
 1. Make installation separate build stages
     * This is not ideal as you will have to run the installation on each build
 2. [Specify containers to run stages of the Jenkins pipeline with .NET Core and npm pre-installed](https://www.jenkins.io/doc/book/pipeline/docker/)
-    * The simplest approach is to have one stage for your `npm` commands and a second stage for your `dotnet` commands, because each stage can have its own agent. You will have to specify `agent none` at the top of the pipeline. 
+    * The simplest approach is to have one stage for your `npm` commands and a second stage for your `dotnet` commands, because each stage can have its own agent. You will have to specify `agent none` at the top of the pipeline.
     * There are some pre-built images for npm (e.g. `node:17-bullseye`)
     * Similarly for .NET you can use [Microsoft's image](https://hub.docker.com/_/microsoft-dotnet-sdk). You may need to set an environment variable `DOTNET_CLI_HOME` (e.g. to `"/tmp/dotnet_cli_home"`) in your Jenkinsfile for the dotnet CLI to work correctly.
 
@@ -66,6 +66,8 @@ You have 2 options for installing .NET Core & npm inside Jenkins:
 6. Select the most recent build from the build history on the left.
 7. Click "Console Output" to view the full logs from the build.
 
+Once the repository scanning has picked up a branch you can build it again by clicking "Build Now" for that branch. You only need to scan the repository to check for new branches with Jenkinsfiles.
+
 ### (Stretch goal) Code coverage
 We want high _test coverage_, meaningfully testing as much of the functionality of the application as possible. _Code coverage_ is a more naive metric - it simply checks which lines of code were executed during the test run. But higher code coverage is usually a good thing and it can still usefully flag which parts of the codebase are definitely untested. So let's include code coverage in our CI pipeline.
 
@@ -77,12 +79,12 @@ Try adding code coverage to Jenkins:
 
 1. Install the [Code Coverage API](https://plugins.jenkins.io/code-coverage-api/) plugin on Jenkins.
 2. Change your Jenkins pipeline to run the tests with code coverage.
-3. Add a step after running the tests to publish coverage. You can see a simple example of the command if you scroll down the Code Coverage API documentation, to the "pipeline example". You will want to use the "istanbulCoberturaAdapter", and the report to publish is "cobertura-coverage.xml" in the coverage folder. 
+3. Add a step after running the tests to publish coverage. You can see a simple example of the command if you scroll down the Code Coverage API documentation, to the "pipeline example". You will want to use the "istanbulCoberturaAdapter", and the report to publish is "cobertura-coverage.xml" in the coverage folder.
 4. You should see a code coverage report appear on the build's page after it completes. Click through to see details.
 
 Now let's enforce high code coverage:
 
-1. Configure it to fail the build for code coverage below 90%. You may find it easiest to use the Jenkins [Snippet Generator](https://www.jenkins.io/doc/book/pipeline/getting-started/#snippet-generator). 
+1. Configure it to fail the build for code coverage below 90%. You may find it easiest to use the Jenkins [Snippet Generator](https://www.jenkins.io/doc/book/pipeline/getting-started/#snippet-generator).
 2. Push your change and watch the build go red!
 3. Edit the `DotnetTemplate.Web/Scripts/spec/exampleSpec.ts` file:
   * Update the import statement: `import { functionOne, functionTwo } from '../home/example';`

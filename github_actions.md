@@ -31,7 +31,7 @@ jobs:
     - uses: actions/checkout@v2 # Adds a step to checkout the repository code
 ```
 3. Commit and push your changes to a branch on your repository.
-4. On your repository page, navigate to the Actions tab. 
+4. On your repository page, navigate to the Actions tab.
 5. You should see a table of workflows. This should have one entry with a name matching your latest commit message. Select this entry.
 6. On the next page click "Build and test" on the left. This should show you the full output of the workflow which ran when you pushed to your branch. See [the documentation](https://docs.github.com/en/actions/configuring-and-managing-workflows/managing-a-workflow-run) for more details on how to view the output from the workflow.
 
@@ -81,6 +81,7 @@ You should amend your workflow file so that it:
 5. Runs the TypeScript tests.
 
 ### (Stretch goal) Slack notifications
+
 To make sure people are aware when there are issues with the build, it can be useful to send a Slack notification at the end of the workflow.
 
 **Before attempting this step please create your own personal slack workspace. This is free and can be set up [here](https://slack.com/create).**
@@ -89,8 +90,12 @@ To make sure people are aware when there are issues with the build, it can be us
 2. Make the workflow post a different message if the workflow failed, so that it's obvious if the workflow failed.
 3. Make the workflow post a different message if the workflow was cancelled.
 
+You should not commit your webhook URL to the repository, instead store it in a [repository secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository), and [read it in your pipeline](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow).
+
 ### (Stretch goal) Workflow status badge
+
 Add a [workflow status badge](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/adding-a-workflow-status-badge) to your repository.
 
 ### (Stretch goal) Change when the workflow is run
+
 Change your workflow so that it only runs when pushing to the main branch or by raising a PR. Is there a way to ensure that no one can update the main branch except through a PR that has passed the workflow?
