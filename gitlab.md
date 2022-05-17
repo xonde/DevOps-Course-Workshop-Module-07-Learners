@@ -6,7 +6,7 @@
 
 Clone this repository onto your machine and create a new, empty repository in GitLab.
 
-Then switch point your codebase to the new repository you just created. You can do this by running a command like the following:
+Then link your local copy to the repository you just created. You can do this by running a command like the following:
 
 ```sh
 git remote set-url origin git@gitlab.com:your-username/your-repository.git

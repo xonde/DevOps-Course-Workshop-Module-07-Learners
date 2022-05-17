@@ -1,6 +1,6 @@
 # Workshop 7 Instructions
 
-## Part 1
+## Part 1 (GitHub/GitLab)
 
 Select the correct set of instructions for your platform of choice:
 
