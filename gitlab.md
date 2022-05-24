@@ -4,15 +4,12 @@
 
 ### Step 1 - Get the code
 
-Clone this repository onto your machine and create a new, empty repository in GitLab.
+- Sign in to GitLab and create a new project/repository
+- Select "Import project"
+- Select "Repo by URL"
+- Enter the URL of this repository and omit any username/password (credentials aren't required because this repository is public).
 
-Then link your local copy to the repository you just created. You can do this by running a command like the following:
-
-```sh
-git remote set-url origin git@gitlab.com:your-username/your-repository.git
-```
-
-You should now be able to push and pull changes to GitLab like normal.
+Finish creating the project and then you should be able to clone your new repository.
 
 ### Step 2 - Set up the app
 
