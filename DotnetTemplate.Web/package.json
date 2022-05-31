@@ -6,7 +6,7 @@
     "prebuild": "npm run clean",
     "build": "run-p build:*",
     "build:webpack": "webpack",
-    "build:sass": "sass Styles:wwwroot/css --quiet",
+    "build:sass": "sass --load-path=node_modules Styles:wwwroot/css --quiet",
     "lint": "eslint ./Scripts/**/*.ts",
     "lint-fix": "eslint --fix ./Scripts/**/*.ts",
     "dev": "run-p dev:*",
