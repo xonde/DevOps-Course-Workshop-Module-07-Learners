@@ -1,4 +1,4 @@
-@import "~nhsuk-frontend/packages/core/all";
+@use "../../node_modules/nhsuk-frontend/packages/core/all" as *;
 
 ul > li > ul > li {
   list-style-type: circle;

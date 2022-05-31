@@ -1,4 +1,4 @@
-﻿@import "~nhsuk-frontend/packages/core/all";
+﻿@use "../../node_modules/nhsuk-frontend/packages/core/all" as *;
 
 html {
   height: 100%;
