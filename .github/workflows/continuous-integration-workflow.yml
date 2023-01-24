@@ -23,3 +23,10 @@ jobs:
     - name: Run TS tests
       working-directory: ./DotnetTemplate.Web
       run: npm t
+    - name: Notify Slack
+      uses: 8398a7/action-slack@v3
+      if: always()
+      with:
+        status: ${{ job.status }}
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
