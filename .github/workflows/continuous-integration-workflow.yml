@@ -8,4 +8,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2 # Adds a step to checkout the repository code
     - name: List stuff
-      run: ls --a
+      run: ls -a
