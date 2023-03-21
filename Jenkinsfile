@@ -1,7 +1,12 @@
 pipeline {
     agent none
+
     stages {
-        stage('BuiLd and Test C# code') {
+        stage('Build and Test C# Code') {
+            environment {
+                DOTNET_CLI_HOME = "/tmp/dotnet_cli_home"
+                XDG_DATA_HOME = "/tmp"
+            }
             agent {
                 docker {
                     image 'mcr.microsoft.com/dotnet/sdk:6.0'
@@ -9,19 +14,19 @@ pipeline {
                 }
             }
             stages {
-                stage('Build') {
+                stage('Build C# Code') {
                     steps {
                         sh 'dotnet build'
                     }
                 }
-                stage("Test") {
+                stage('Test C# Code') {
                     steps {
                         sh 'dotnet test'
                     }
                 }
             }
         }
-        stage("Build, Lint and Test TS code") {
+        stage('Build, Lint and Test Typescript Code ') {
             agent {
                 docker {
                     image 'node:17-bullseye'
@@ -29,24 +34,25 @@ pipeline {
                 }
             }
             stages {
-                stage('NPM Install') {
+                stage('Build Typescript Code') {
                     steps {
-                        sh 'npm install'
+                        dir('DotnetTemplate.Web') {
+                            sh 'npm install && npm run build'
+                        }
                     }
                 }
-                stage('Build') {
+                stage('Lint Typescript Code') {
                     steps {
-                        sh 'npm run build'
+                        dir('DotnetTemplate.Web') {
+                            sh 'npm run lint'
+                        }
                     }
                 }
-                stage('Test') {
+                stage('Test Typescript Code') {
                     steps {
-                        sh 'npm t'
-                    }
-                }
-                stage('Lint') {
-                    steps {
-                        sh 'npm run lint'
+                        dir('DotnetTemplate.Web') {
+                            sh 'npm run test'
+                        }
                     }
                 }
             }
