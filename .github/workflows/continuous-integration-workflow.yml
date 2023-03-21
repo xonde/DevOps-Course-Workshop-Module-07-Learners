@@ -31,6 +31,7 @@ jobs:
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   publish:
+    if: github.ref_name == 'main'
     needs: build
     name: Publish to Docker Hub
     runs-on: ubuntu-latest
