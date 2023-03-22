@@ -51,3 +51,10 @@ jobs:
         context: .
         push: true
         tags: taiwoolateju/dotnettemplate:${{ github.ref_name }}
+  deploy:
+    needs: publish
+    name: Deploy Azure Webapp
+    runs-on: ubuntu-latest
+    steps:
+    - name: Call Azure WebApp Webhook
+      run: curl -dH -X POST ${{ secrets.AZURE_WEBHOOK }}
